@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Peter\'s NoteList</string>
+
+<!--Note Activity-->
+    <string name="textNotes">Notes: </string>
+    <string name="textTitle">Title</string>
+    <string name="textEnterTextHere">Enter Text Here</string>
+    <string name="textSave">Save</string>
+    <string name="textPriority">Priority</string>
+    <string name="textHigh">High</string>
+    <string name="textMedium">Medium</string>
+    <string name="textLow">Low</string>
+
+    <string name="textSortTitle">Sort by Titles:</string>
+    <string name="textSortPriority">Sort by Priorities:</string>
+    <string name="textSortDateCreated">Sort by Date Created:</string>
+
+    <string name="radioAscending">Ascending</string>
+    <string name="radioDescending">Descending</string>
+
+    <string name="radioHighToLow">High to Low</string>
+    <string name="radioLowToHigh">Low to High</string>
+
+</resources>

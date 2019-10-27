@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNoteActivity"
+    android:id="@+id/activity_note">
+
+<!--    Dummy Layout to catch initial autofocus-->
+
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px" />
+
+    <!--    Navigation Bar-->
+    <RelativeLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_navbar_background"
+        android:padding="10dp">
+
+
+        <ImageButton
+            android:id="@+id/imageButtonAddNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_toStartOf="@+id/imageButtonList"
+            android:layout_toLeftOf="@+id/imageButtonList"
+            android:background="@color/color_transparent"
+            app:srcCompat="@drawable/icon_add_96" />
+
+        <ImageButton
+            android:id="@+id/imageButtonList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/color_transparent"
+            app:srcCompat="@drawable/icon_list_96" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_toEndOf="@+id/imageButtonList"
+            android:layout_toRightOf="@+id/imageButtonList"
+            android:background="@color/color_transparent"
+            app:srcCompat="@drawable/icon_settings_96" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/ScrollViewAddNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <EditText
+                android:id="@+id/editTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/textTitle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="36dp"
+                android:ems="12"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords" />
+
+            <EditText
+                android:id="@+id/editBodyText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/editTitle"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:ems="20"
+                android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
+                android:hint="@string/textEnterTextHere"
+                android:background="@color/color_white" />
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navbar"
+        android:layout_below="@+id/ScrollViewAddNote" >
+
+        <TextView
+            android:id="@+id/textViewPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/textPriority"
+            android:textSize="36dp"
+            android:textColor="@color/color_black"
+            android:layout_above="@id/buttonSave" />
+
+        <RadioGroup
+            android:id="@+id/RadioGroupPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@+id/textViewPriority"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@id/buttonSave" >
+
+            <RadioButton
+                android:id="@+id/radioButtonHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/textHigh"
+                android:textSize="20dp"
+                android:button="@null"
+                android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
+                android:gravity="center|bottom" />
+
+            <RadioButton
+                android:id="@+id/radioButtonMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/textMedium"
+                android:textSize="20dp"
+                android:button="@null"
+                android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
+                android:gravity="center|bottom" />
+
+
+            <RadioButton
+                android:id="@+id/radioButtonLow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/textLow"
+                android:textSize="20dp"
+                android:button="@null"
+                android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
+                android:gravity="center|bottom" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textSave"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:ems="18"
+            android:textSize="15dp"
+            android:background="@color/color_save_background"
+            />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
