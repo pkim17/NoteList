@@ -98,10 +98,10 @@ public class NoteListDataSource {
     }
 
 
-    public ArrayList<Note> getNotes(String sortTitle, String sortPriority, String sortDate) {
+    public ArrayList<Note> getNotes(String sortField, String sortOrder) {
         ArrayList<Note> notes = new ArrayList<>();
         try {
-            String query = "SELECT * FROM notes ORDER BY " + sortTitle + " " + sortPriority + " " + sortDate;
+            String query = "SELECT * FROM notes ORDER BY " + sortField + " " + sortOrder;
             System.out.println("Test1");
             Cursor cursor = database.rawQuery(query, null);
             System.out.println("Test2");
@@ -113,7 +113,7 @@ public class NoteListDataSource {
                 newNote.setNoteId(cursor.getInt(0));
                 newNote.setNoteTitle(cursor.getString(1));
                 newNote.setNoteBodyText(cursor.getString(2));
-                newNote.setPriority(cursor.getString(3));
+                newNote.setPriority(cursor.getInt(3));
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(Long.valueOf(cursor.getString(4)));
                 newNote.setDateCreated(calendar);
@@ -139,7 +139,7 @@ public class NoteListDataSource {
             note.setNoteId(cursor.getInt(0));
             note.setNoteTitle(cursor.getString(1));
             note.setNoteBodyText(cursor.getString(2));
-            note.setPriority(cursor.getString(3));
+            note.setPriority(cursor.getInt(3));
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(Long.valueOf(cursor.getString(4)));
             note.setDateCreated(calendar);

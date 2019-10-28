@@ -8,12 +8,13 @@ public class Note {
     private int noteId;
     private String noteTitle;
     private String noteBodyText;
-    private String priority;
+    private int priority;
     private Calendar dateCreated;
 
     public Note() {
         noteId = -1;
         dateCreated = Calendar.getInstance();
+        priority = -1;
 
     }
 
@@ -41,11 +42,11 @@ public class Note {
         this.noteBodyText = noteBodyText;
     }
 
-    public String getPriority() {
+    public int getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(int priority) {
         this.priority = priority;
     }
 

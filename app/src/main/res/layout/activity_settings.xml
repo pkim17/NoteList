@@ -62,59 +62,66 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textSortTitle"
+                android:id="@+id/textSortBy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:text="@string/textSortTitle"
+                android:text="@string/textSortBy"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/radioGroupSortTitle"
+                android:id="@+id/radioGroupSortBy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/textSortTitle" >
+                android:layout_below="@+id/textSortBy" >
 
                 <RadioButton
-                    android:id="@+id/radioTitleAscending"
+                    android:id="@+id/radioButtonSortTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioAscending" />
+                    android:text="@string/textSortTitle" />
 
                 <RadioButton
-                    android:id="@+id/radioTitleDescending"
+                    android:id="@+id/radioButtonSortPriority"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioDescending" />
+                    android:text="@string/textSortPriority" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonSortDateCreated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/textSortDateCreated" />
 
             </RadioGroup>
 
 
             <TextView
-                android:id="@+id/textSortPriority"
+                android:id="@+id/textSortOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/radioGroupSortTitle"
+                android:layout_below="@+id/radioGroupSortBy"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:text="@string/textSortPriority"
+                android:text="@string/textSortOrder"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/radioGroupSortPriority"
+                android:id="@+id/radioGroupSortOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textSortPriority"
+                android:layout_below="@+id/textSortOrder"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginStart="35dp"
@@ -122,58 +129,22 @@
                 android:layout_marginTop="10dp">
 
                 <RadioButton
-                    android:id="@+id/radioHighToLow"
+                    android:id="@+id/radioButtonAscending"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioHighToLow" />
-
-                <RadioButton
-                    android:id="@+id/radioLowToHigh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/radioLowToHigh" />
-
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/textSortDateCreated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radioGroupSortPriority"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/textSortDateCreated"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <RadioGroup
-                android:id="@+id/RadioGroupSortDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textSortDateCreated"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="35dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="10dp" >
-
-                <RadioButton
-                    android:id="@+id/radioDateAscending"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="@string/radioAscending" />
 
                 <RadioButton
-                    android:id="@+id/radioDateDescending"
-                    android:layout_width="match_parent"
+                    android:id="@+id/radioButtonDescending"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/radioDescending" />
 
             </RadioGroup>
+
+
 
         </RelativeLayout>
 

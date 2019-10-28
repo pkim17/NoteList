@@ -13,9 +13,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:text="@string/textTitle"
-        android:textSize="36sp" />
+        android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/textViewPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textViewTitle"
@@ -26,8 +27,26 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:background="@color/color_transparent"
-        android:text="@string/textHigh"
+        android:text="@string/textPriority"
         android:textColor="@color/system_red"
-        android:textSize="36sp" />
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textButtonDeleteContact"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toLeftOf="@+id/textViewPriority"
+        android:textColor="@color/color_white"
+        android:background="@color/system_red"
+        android:visibility="invisible"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_alignBaseline="@+id/textViewTitle"
+        />
 
 </RelativeLayout>

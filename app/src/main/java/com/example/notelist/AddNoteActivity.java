@@ -149,11 +149,11 @@ public class AddNoteActivity extends AppCompatActivity {
         editTitle.setText(currentNote.getNoteTitle());
         editBodyText.setText(currentNote.getNoteBodyText());
 
-        if (currentNote.getPriority() == "high") {
+        if (currentNote.getPriority() == 3) {
             rbHigh.setChecked(true);
-        } else if (currentNote.getPriority() == "medium") {
+        } else if (currentNote.getPriority() == 2) {
             rbMedium.setChecked(true);
-        } else {
+        } else if (currentNote.getPriority() == 1) {
             rbLow.setChecked(true);
         }
     }
@@ -208,13 +208,13 @@ public class AddNoteActivity extends AppCompatActivity {
                 RadioButton rbLow = (RadioButton) findViewById(R.id.radioButtonLow);
 
                 if (rbHigh.isChecked()) {
-                    currentNote.setPriority("high");
+                    currentNote.setPriority(3);
                 }
                 else if (rbMedium.isChecked()) {
-                    currentNote.setPriority("medium");
+                    currentNote.setPriority(2);
                 }
                 else {
-                    currentNote.setPriority("low");
+                    currentNote.setPriority(1);
 
                 }
         }

@@ -21,9 +21,8 @@ public class SettingsActivity extends AppCompatActivity {
         initListButton();
         initSettingsButton();
         initSettings();
-        initSortTitleClick();
-        initSortPriorityClick();
-        initSortDateClick();
+        initSortByClick();
+        initSortOrderClick();
 
     }
 
@@ -61,118 +60,97 @@ public class SettingsActivity extends AppCompatActivity {
 //        Retrieves string value associated with sortfield key
 //        If no value stored, default value is assigned
 
-        String sortTitle = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
-                .getString("sorttitle", "ASC");
-        String sortPriority = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
-                .getString("sortpriority", "high");
-        String sortDateCreated = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
-                .getString("sortdate", "ASC");
+        String sortBy = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
+                .getString("sortfield", "notetitle");
+        String sortOrder = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
+                .getString("sortorder", "ASC");
 
-        RadioButton radioTitleAscending = (RadioButton) findViewById(R.id.radioTitleAscending);
-        RadioButton radioTitleDescending = (RadioButton) findViewById(R.id.radioTitleDescending);
+        RadioButton radioSortTitle = (RadioButton) findViewById(R.id.radioButtonSortTitle);
+        RadioButton radioSortPriority = (RadioButton) findViewById(R.id.radioButtonSortPriority);
+        RadioButton radioSortDateCreated = (RadioButton) findViewById(R.id.radioButtonSortDateCreated);
+
 
 //        Value retrieved for preferred sort field is to determine which RadioButton should be checked
 
-        if (sortTitle.equalsIgnoreCase("ASC")) {
-            radioTitleAscending.setChecked(true);
+        if (sortBy.equalsIgnoreCase("notetitle")) {
+            radioSortTitle.setChecked(true);
+        }
+        else if (sortBy.equalsIgnoreCase("priority")) {
+            radioSortPriority.setChecked(true);
         }
         else {
-            radioTitleDescending.setChecked(true);
+            radioSortDateCreated.setChecked(true);
         }
 
-        RadioButton radioPriorityHigh = (RadioButton) findViewById(R.id.radioHighToLow);
-        RadioButton radioPriorityLow = (RadioButton) findViewById(R.id.radioLowToHigh);
 
-        if (sortPriority.equalsIgnoreCase("high")) {
-            radioPriorityHigh.setChecked(true);
-        }
-        else {
-            radioPriorityLow.setChecked(true);
-        }
+        RadioButton radioAscending = (RadioButton) findViewById(R.id.radioButtonAscending);
+        RadioButton radioDescending = (RadioButton) findViewById(R.id.radioButtonDescending);
 
-        RadioButton radioDateAscending = (RadioButton) findViewById(R.id.radioDateAscending);
-        RadioButton radioDateDescending = (RadioButton) findViewById(R.id.radioDateDescending);
-
-        if (sortDateCreated.equalsIgnoreCase("ASC")) {
-            radioDateAscending.setChecked(true);
+        if (sortOrder.equalsIgnoreCase("ASC")) {
+            radioAscending.setChecked(true);
         }
         else {
-            radioDateDescending.setChecked(true);
+            radioDescending.setChecked(true);
         }
 
     }
 
-    private void initSortTitleClick()  {
+    private void initSortByClick()  {
 
-        RadioGroup rgSortTitle = (RadioGroup) findViewById(R.id.radioGroupSortTitle);
-        rgSortTitle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        RadioGroup rgSortBy = (RadioGroup) findViewById(R.id.radioGroupSortBy);
+        rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                RadioButton radioTitleAscending = (RadioButton) findViewById(R.id.radioTitleAscending);
-                RadioButton radioTitleDescending = (RadioButton) findViewById(R.id.radioTitleDescending);
 
-                if (radioTitleAscending.isChecked()) {
+                RadioButton radioTitle = (RadioButton) findViewById(R.id.radioButtonSortTitle);
+                RadioButton radioPriority = (RadioButton) findViewById(R.id.radioButtonSortPriority);
+                RadioButton radioDateCreated = (RadioButton) findViewById(R.id.radioButtonSortDateCreated);
+
+
+                if (radioTitle.isChecked()) {
                     getSharedPreferences("MyNoteListPreferences",
                             Context.MODE_PRIVATE).edit()
-                            .putString("sorttitle", "ASC").commit();
+                            .putString("sortfield", "notetitle").commit();
+                }
+                else if (radioPriority.isChecked()) {
+                    getSharedPreferences("MyNoteListPreferences",
+                            Context.MODE_PRIVATE).edit()
+                            .putString("sortfield", "priority").commit();
                 }
                 else {
                     getSharedPreferences("MyNoteListPreferences",
                             Context.MODE_PRIVATE).edit()
-                            .putString("sorttitle", "DSC").commit();
+                            .putString("sortfield", "datecreated").commit();
                 }
             }
         });
     }
 
-    private void initSortPriorityClick()  {
+    private void initSortOrderClick()  {
 
-        RadioGroup rgSortPriority = (RadioGroup) findViewById(R.id.radioGroupSortPriority);
-        rgSortPriority.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        RadioGroup rgSortOrder = (RadioGroup) findViewById(R.id.radioGroupSortOrder);
+        rgSortOrder.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                RadioButton radioPriorityHighToLow = (RadioButton) findViewById(R.id.radioHighToLow);
-                RadioButton radioPriorityLowToHigh = (RadioButton) findViewById(R.id.radioLowToHigh);
+                RadioButton radioAscending = (RadioButton) findViewById(R.id.radioButtonAscending);
+                RadioButton radioDescending = (RadioButton) findViewById(R.id.radioButtonDescending);
 
-                if (radioPriorityHighToLow.isChecked()) {
+                if (radioAscending.isChecked()) {
                     getSharedPreferences("MyNoteListPreferences",
                             Context.MODE_PRIVATE).edit()
-                            .putString("sortpriority", "high").commit();
+                            .putString("sortorder", "ASC").commit();
                 }
                 else {
                     getSharedPreferences("MyNoteListPreferences",
                             Context.MODE_PRIVATE).edit()
-                            .putString("sortpriority", "low").commit();
+                            .putString("sortorder", "DESC").commit();
                 }
             }
         });
     }
 
-    private void initSortDateClick()  {
-
-        RadioGroup rgSortDate = (RadioGroup) findViewById(R.id.RadioGroupSortDate);
-        rgSortDate.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                RadioButton radioDateAscending = (RadioButton) findViewById(R.id.radioDateAscending);
-                RadioButton radioDateDescending = (RadioButton) findViewById(R.id.radioDateDescending);
-
-                if (radioDateAscending.isChecked()) {
-                    getSharedPreferences("MyNoteListPreferences",
-                            Context.MODE_PRIVATE).edit()
-                            .putString("sortdate", "ASC").commit();
-                }
-                else {
-                    getSharedPreferences("MyNoteListPreferences",
-                            Context.MODE_PRIVATE).edit()
-                            .putString("sortdate", "DSC").commit();
-                }
-            }
-        });
-    }
 
 
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,8 +28,7 @@ public class NoteListActivity extends AppCompatActivity {
         initAddNoteButton();
         initListButton();
         initSettingsButton();
-//        initItemClick();
-
+        initItemClick();
 
     }
 
@@ -36,19 +36,17 @@ public class NoteListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        String sortTitle = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
-                .getString("sorttitle", "ASC");
-        String sortPriority = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
-                .getString("sortpriority", "high");
-        String sortDateCreated = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
-                .getString("sortdate", "ASC");
+        String sortBy = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
+                .getString("sortfield", "notetitle");
+        String sortOrder = getSharedPreferences("MyNoteListPreferences", Context.MODE_PRIVATE)
+                .getString("sortorder", "ASC");
 
         NoteListDataSource ds = new NoteListDataSource(this);
 
         try {
 
             ds.open();
-            notes = ds.getNotes(sortTitle, sortPriority, sortDateCreated);
+            notes = ds.getNotes(sortBy, sortOrder);
             ds.close();
 
 //            If data contains existing notes
@@ -101,25 +99,44 @@ public class NoteListActivity extends AppCompatActivity {
         });
     }
 
-//    private void initItemClick()    {
-//        ListView listView = (ListView) findViewById(R.id.listViewNotes);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-//
-//                Note selectedNote = notes.get(position);
-//
-//                if (isDeleting) {
-//                    adapter.showDelete(position, itemClicked, NoteListActivity.this, selectedNote);
-//                }
-//                else {
-//                    Intent intent = new Intent(NoteListActivity.this, AddNoteActivity.class);
-//                    intent.putExtra("noteid", selectedNote.getNoteId());
-//                    startActivity(intent);
-//                }
-//            }
-//        });
-//    }
+
+
+    private void initItemClick()    {
+        ListView listView = (ListView) findViewById(R.id.listViewNotes);
+
+        listView.setLongClickable(true);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+
+                Note selectedNote = notes.get(position);
+
+                adapter.showDelete(position, itemClicked, NoteListActivity.this, selectedNote);
+
+                return false;
+
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+
+                Note selectedNote = notes.get(position);
+
+                Intent intent = new Intent(NoteListActivity.this, AddNoteActivity.class);
+                intent.putExtra("noteid", selectedNote.getNoteId());
+                startActivity(intent);
+
+            }
+        });
+
+
+
+    }
+
+
 
 
 

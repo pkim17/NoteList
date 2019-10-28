@@ -8,12 +8,12 @@ import android.util.Log;
 public class NoteListDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "notes.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String CREATE_TABLE_NOTES =
             "create table notes (_id integer primary key autoincrement, "
             + "notetitle text not null, bodytext text, "
-            + "priority text, datecreated text);";
+            + "priority integer, datecreated text);";
 
 
     public NoteListDBHelper(Context context) {
