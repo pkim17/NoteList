@@ -145,7 +145,7 @@ public class SettingsActivity extends AppCompatActivity {
                 else {
                     getSharedPreferences("MyNoteListPreferences",
                             Context.MODE_PRIVATE).edit()
-                            .putString("sortorder", "DSC").commit();
+                            .putString("sortorder", "DESC").commit();
                 }
             }
         });
