@@ -29,6 +29,7 @@ public class NoteListActivity extends AppCompatActivity {
         initListButton();
         initSettingsButton();
         initItemClick();
+        initDeleteButton();
 
     }
 
@@ -99,41 +100,41 @@ public class NoteListActivity extends AppCompatActivity {
         });
     }
 
-
+    private void initDeleteButton() {
+        final Button deleteButton = (Button) findViewById(R.id.buttonNoteListDelete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isDeleting) {
+                    deleteButton.setText("Delete");
+                    isDeleting = false;
+                    adapter.notifyDataSetChanged();
+                }
+                else {
+                    deleteButton.setText("Done Deleting");
+                    isDeleting = true;
+                }
+            }
+        });
+    }
 
     private void initItemClick()    {
         ListView listView = (ListView) findViewById(R.id.listViewNotes);
-
-        listView.setLongClickable(true);
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-
-                Note selectedNote = notes.get(position);
-
-                adapter.showDelete(position, itemClicked, NoteListActivity.this, selectedNote);
-
-                return false;
-
-            }
-        });
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-
                 Note selectedNote = notes.get(position);
 
-                Intent intent = new Intent(NoteListActivity.this, AddNoteActivity.class);
-                intent.putExtra("noteid", selectedNote.getNoteId());
-                startActivity(intent);
-
+                if (isDeleting) {
+                    adapter.showDelete(position, itemClicked, NoteListActivity.this, selectedNote);
+                }
+                else {
+                    Intent intent = new Intent(NoteListActivity.this, AddNoteActivity.class);
+                    intent.putExtra("noteid", selectedNote.getNoteId());
+                    startActivity(intent);
+                }
             }
         });
-
-
-
     }
 
 

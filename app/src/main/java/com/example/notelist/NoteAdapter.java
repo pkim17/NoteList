@@ -46,6 +46,10 @@ public class NoteAdapter extends ArrayAdapter<Note> {
             else if (note.getPriority() == 1) {
                 noteTextPriority.setText("Low");
             }
+
+            TextView noteTextBody = v.findViewById(R.id.textViewBodyText);
+            noteTextBody.setText(note.getNoteBodyText());
+
         }
         catch (Exception e)   {
             e.printStackTrace();
@@ -85,7 +89,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
             db.close();
         }
         catch (Exception e) {
-            Toast.makeText(adapterContext, "Delete Contact Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(adapterContext, "Delete Note Failed", Toast.LENGTH_LONG).show();
         }
         this.notifyDataSetChanged();
     }

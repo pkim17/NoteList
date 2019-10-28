@@ -5,6 +5,7 @@
     <string name="textNotes">Notes: </string>
     <string name="textTitle">Title</string>
     <string name="textEnterTextHere">Enter Text Here</string>
+    <string name="textBodyText">Body Text</string>
     <string name="textSave">Save</string>
     <string name="textPriority">Priority</string>
     <string name="textHigh">High</string>
@@ -20,6 +21,6 @@
     <string name="radioAscending">Ascending</string>
     <string name="radioDescending">Descending</string>
 
-    <string name="textButtonDeleteContact">Delete</string>
+    <string name="textDelete">Delete</string>
 
 </resources>
