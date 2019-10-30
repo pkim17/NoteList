@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddNoteActivity"/>
+        <activity android:name=".AddNoteActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".SettingsActivity"/>
 
 
